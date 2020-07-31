@@ -1,17 +1,31 @@
 import React from 'react';
 
-function Potato() {
-  return <h1>I love Potato</h1>
+function Food({name, picture}) {
+  return (
+    <div>
+      <h2>I love {name}</h2>
+      <img src={picture} width="200" />
+    </div>
+  );
 }
 
-function Apple() {
-  return <h1>I love Apple</h1>
-}
+const foodILike = [
+  {
+    name: 'Kimchi',
+    image : 'http://aeriskitchen.com/wp-content/uploads/2020/04/Kimchi_Soybean_Sprout_GukBap_00-.jpg'
+  },
+  {
+    name: 'Samgyeopsal',
+    image: 'https://crcf.cookatmarket.com/product/images/2019/12/muja_1577338909_4776_720.jpg'
+  },
+];
 
+function renderFood(dish) {
+  return <Food name={dish.name} picture={dish.image} />
+}
 function App() {
   return <div> 
-    <h1> Hello </h1>
-    <Potato />
+    {foodILike.map( renderFood )}
     </div>
 }
 
