@@ -1,32 +1,44 @@
 import React from 'react';
 
-function Food({name, picture}) {
-  return (
-    <div>
-      <h2>I love {name}</h2>
-      <img src={picture} width="200" />
-    </div>
-  );
-}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('hello');
+  }
 
-const foodILike = [
-  {
-    name: 'Kimchi',
-    image : 'http://aeriskitchen.com/wp-content/uploads/2020/04/Kimchi_Soybean_Sprout_GukBap_00-.jpg'
-  },
-  {
-    name: 'Samgyeopsal',
-    image: 'https://crcf.cookatmarket.com/product/images/2019/12/muja_1577338909_4776_720.jpg'
-  },
-];
+  state = {
+    count : 0,
+  };
 
-function renderFood(dish) {
-  return <Food name={dish.name} picture={dish.image} />
-}
-function App() {
-  return <div> 
-    {foodILike.map( renderFood )}
-    </div>
+  add = () => {
+    this.setState({ count: this.state.count + 1})
+  };
+  
+  minus = () => {
+    this.setState({ count: this.state.count - 1})
+  };
+  
+  componentDidMount() {
+    console.log('component rendered.')
+  }
+
+  componentDidUpdate() {
+    console.log('component updated.')
+  }
+
+  componentWillUpdate() {
+    console.log('componend will update.')
+  }
+  render() {
+    console.log('render');
+    return (
+      <div>
+        <h1>The number is: {this.state.count}.</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
